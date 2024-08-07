@@ -1,5 +1,6 @@
 name: 04 - Using Actions
-on: push
+on: 
+  - push
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -8,6 +9,4 @@ jobs:
         uses: actions/checkout@4
       - name: Printing Folders
         run : ls
-
-
 
