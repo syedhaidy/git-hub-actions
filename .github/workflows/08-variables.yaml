@@ -1,6 +1,6 @@
 name: 08 - Using Variables
 on: 
-    push:
+    # push:
     workflow_dispatch: 
 env:
     WORKFLOW_VAR: 'I am a workflow env var'
@@ -48,7 +48,7 @@ jobs:
               echo "Environment var: ${{vars.TARGET_VAR}}"
     echo-staging:
         runs-on: ubuntu-latest
-        environment: prod
+        environment: staging
         # echo "Org var: ${{vars.ORG_VAR}}"
         steps:
           - name: Print Staging Variables
