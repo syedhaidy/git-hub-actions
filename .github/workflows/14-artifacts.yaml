@@ -41,4 +41,9 @@ jobs:
             with:
                 name: app
                 path: 14-artifacts/react-app/build
-          - name: show folder structur
+          - name: show folder structure
+            run: ls -R
+
+              
+            
+        
