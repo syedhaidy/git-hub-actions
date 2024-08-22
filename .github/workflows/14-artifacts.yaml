@@ -24,9 +24,9 @@ jobs:
               if: steps.cache.outputs.cache-hit != true
               run: npm ci
             - name: Unit test
-              run: npm un test
+              run: npm run test
             - name: Build code
-              run: npm run buikd
+              run: npm run build
             - name: Upload build files
               uses: actions/upload-artifact@v4
               with:
