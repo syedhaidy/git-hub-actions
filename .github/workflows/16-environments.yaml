@@ -9,8 +9,7 @@ run-name: 16 - Working with Environments | env - ${{ inputs.target-env }}
 jobs:
     echo:
         runs-on: ubuntu-latest
-        env:
-            my-env-value: ${{vars.MY_ENV_VALUE || 'default value'}}
+        environment: ${{ inputs.target-env }}
         steps:
             - name: Echo vars
               run: echo "Env variable:${{env.my-env-value}}"
