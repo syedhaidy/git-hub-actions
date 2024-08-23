@@ -6,7 +6,7 @@ jobs:
         runs-on: ${{matrix.os}}
         name: ${{matrix.os}} - ${{matrix.node-version}}
         strategy:
-            # Default is true, whenever single job  is failed other job will be interepted.
+            # In Matrix Strategy, its fail fast approach, default value  is true, whenever single job  is failed other job will be interepted.
             fail-fast: false 
             matrix:
                 node-version: [18.x, 20.x, 21.x]
@@ -33,6 +33,22 @@ jobs:
                 sleep 10
             - name: Upload test results
               run: echo "Uploading the test result"
+    include-example:
+        runs-on: ubuntu-latest
+        name: ${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}
+        strategy:
+          matrix:
+            color: [red, green]
+            shape: [circle, square]
+            size: [small, large]
+            include:
+              - color: red
+                shape: triangle
+        steps:
+          - name: Dummy
+            run: echo "${{matrix.color}}-${{matrix.shape}}-${{matrix.size}}"
+            
+            
               
         
                 
