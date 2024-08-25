@@ -10,7 +10,7 @@ on:
 run-name: 17 - 1 - Custom Actions - Composite | env - ${{inputs.tatget-env}}
 env:
         # Reusing the react application rather creating new one
-        working-directory: '14-artifacts/react-app'
+        working-directory: 14-artifacts/react-app
 
 jobs:
     build:
