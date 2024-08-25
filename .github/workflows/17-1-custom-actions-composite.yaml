@@ -16,6 +16,7 @@ jobs:
         runs-on: ubuntu-latest
         defaults:
              run:
+                # In all the run command in th Steps we need to pass the working-directory but we can set as default for run here, as declared below
                 working-directory: ${{env.working-directory}}
         steps:
             - name: Checkout
