@@ -7,7 +7,7 @@ jobs:
     dependency-update:
         runs-on: ubuntu-latest
         steps:
-            - name: Checkout
-              uses: actions/checkout@v4
-            - name: Check for dependency updates
-              uses: ./.githib/actions/jss-depenedency-update
+           - name: Checkout
+             uses: actions/checkout@v4
+           - name: Check for dependency updates
+             uses: ./.githib/actions/jss-depenedency-update
