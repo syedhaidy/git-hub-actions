@@ -13,7 +13,7 @@ on:
           default: 14-artifacts/react-app 
         debug:
           type: boolean
-
+# Below is setting to generate automatic token with help of ${{secrets.GITHUB_TOKEN}} and provide write access fot the contents and pull-request.
 permissions: 
   contents: write
   pull-requests: write
