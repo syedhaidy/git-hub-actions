@@ -1,0 +1,27 @@
+name: Get Old Workflow Dispatch Inputs
+
+on:
+  workflow_dispatch: # Trigger manually
+
+jobs:
+  get-old-dispatch-inputs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Workflow Runs (Older Runs)
+        id: get_runs
+        run: |
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/actions/runs?per_page=100" > runs.json
+          cat runs.json # Show the list of runs to identify the one you need
+
+      - name: Extract Specific Workflow Run ID
+        id: extract_run_id
+        run: |
+          RUN_ID=$(jq '.workflow_runs[] | select(.name == "11 - Working with Inputs" and .event == "workflow_dispatch") | .id' runs.json | head -n 1)
+          echo "Selected Run ID: $RUN_ID"
+          echo "run_id=$RUN_ID" >> $GITHUB_ENV
+
+      - name: Fetch Inputs of the Workflow
+        run: |
+          curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          "https://api.github.com/repos/${{ github.repository }}/actions/runs/${{ env.run_id }}" | jq '.'
